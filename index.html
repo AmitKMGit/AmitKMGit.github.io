@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Portfolio - Amit Maurya</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+    header {
+      padding: 20px 40px;
+      background: #020617;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    header nav a {
+      margin-left: 16px;
+      text-decoration: none;
+      color: #e5e7eb;
+      font-size: 14px;
+    }
+    .hero {
+      padding: 60px 40px;
+    }
+    .hero h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      border: 1px solid #38bdf8;
+      text-decoration: none;
+      color: #e5e7eb;
+      font-size: 14px;
+    }
+    section {
+      padding: 40px;
+    }
+    .project {
+      margin-bottom: 20px;
+      padding: 16px;
+      border-radius: 8px;
+      background: #020617;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      background: #020617;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Amit Maurya</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Hi, I'm Amit 👋</h2>
+      <p>
+        I'm an aspiring software developer who loves data structures,
+        algorithms, and building cool projects. This is my portfolio website,
+        where I showcase my work and skills.
+      </p>
+      <a href="#projects" class="btn">View my projects</a>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Write 3–4 lines about yourself here: your current education/job,
+        what technologies you know (C++, DSA, web dev, etc.), and what kind of
+        roles you’re aiming for.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <div class="project">
+        <h3>Splitwise Clone</h3>
+        <p>
+          A web app to split expenses with friends. Built with [your tech stack],
+          supports multiple groups, balances, and expense history.
+        </p>
+        <p><strong>Tech:</strong> React, Node.js, PostgreSQL (example)</p>
+        <a href="#" class="btn">View Code</a>
+      </div>
+
+      <div class="project">
+        <h3>Longest Substring Without Repeating Characters</h3>
+        <p>
+          Implemented an optimized sliding window solution using unordered_map
+          to achieve O(n) time complexity.
+        </p>
+        <p><strong>Tech:</strong> C++, STL</p>
+        <a href="#" class="btn">View Code</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: yourmail@example.com</p>
+      <p>GitHub: <a href="https://github.com/yourusername" style="color:#38bdf8;">github.com/yourusername</a></p>
+      <p>LinkedIn: <a href="#" style="color:#38bdf8;">linkedin.com/in/yourprofile</a></p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Amit Maurya. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
