@@ -2,140 +2,1165 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Portfolio - Amit Maurya</title>
+  <title>Amit Maurya • Software Developer Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #0f172a;
-      color: #e5e7eb;
+    :root {
+      --bg: #020617;
+      --bg-elevated: #020617;
+      --bg-card: #0b1220;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.3);
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
+      --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.65);
+      --transition-fast: 180ms ease-out;
     }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #020617 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---------- Top nav ---------- */
     header {
-      padding: 20px 40px;
-      background: #020617;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0%, #38bdf8, #4f46e5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #0f172a;
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.6);
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .brand-name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .brand-role {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      position: relative;
+      padding-bottom: 2px;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #38bdf8, #4f46e5);
+      transition: width 200ms ease-out;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      font-size: 13px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .nav-cta span {
+      font-size: 16px;
+      transform: translateY(1px);
+    }
+
+    .nav-cta:hover {
+      border-color: var(--accent);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), rgba(15, 23, 42, 0.95));
+      box-shadow: var(--shadow-subtle);
+      transform: translateY(-1px);
+    }
+
+    /* ---------- Main content wrapper ---------- */
+    main {
+      flex: 1;
+    }
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 30px;
+      align-items: center;
+      margin-top: 12px;
+      margin-bottom: 48px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      border-radius: 999px;
+      padding: 4px 10px 4px 4px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      width: fit-content;
+      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.7);
+    }
+
+    .pill-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0%, #22c55e, #15803d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ecfdf5;
+      font-size: 14px;
+    }
+
+    .pill span {
+      color: var(--text-muted);
+    }
+
+    .hero-title {
+      font-size: clamp(30px, 4vw, 38px);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 540px;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background var(--transition-fast),
+                  transform var(--transition-fast),
+                  box-shadow var(--transition-fast),
+                  border-color var(--transition-fast),
+                  color var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top left, #38bdf8, #4f46e5);
+      color: #0b1120;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 45px rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(148, 163, 184, 0.6);
+      color: var(--text-main);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), rgba(15, 23, 42, 0.96));
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .meta-chip {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .meta-chip strong {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Hero right card */
+    .hero-right {
+      position: relative;
+    }
+
+    .profile-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      padding: 20px 20px 18px;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: -80px;
+      background:
+        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.18), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      gap: 12px;
+    }
+
+    .profile-main {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .profile-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: radial-gradient(circle at 25% 0, #38bdf8, #4f46e5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: #0b1120;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
+    }
+
+    .profile-text-name {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .profile-text-role {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .profile-highlight {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .profile-highlight span {
+      color: var(--accent);
+    }
+
+    .profile-body {
+      margin-top: 4px;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .profile-stat {
+      border-radius: 14px;
+      padding: 10px 10px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(30, 64, 175, 0.8);
+      font-size: 11px;
+    }
+
+    .profile-stat strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 1px;
+    }
+
+    .profile-skills-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      font-size: 11px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .chip--accent {
+      border-color: rgba(56, 189, 248, 0.9);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    /* ---------- Sections ---------- */
+    section {
+      margin-bottom: 40px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #38bdf8, #4f46e5);
+      box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
+    }
+
+    .section-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .section-body {
+      background: linear-gradient(to bottom right, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    /* About content */
+    .about-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .about-item {
+      font-size: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .about-item strong {
+      display: block;
+      color: var(--text-main);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    /* Skills section */
+    .skills-body {
+      padding: 18px 18px 14px;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .skills-group-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .project-card {
+      position: relative;
+      padding: 14px 14px 12px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.9);
+      overflow: hidden;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background 200ms ease-out;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: -60px;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 45%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease-out;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.8);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 1);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .project-header {
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .project-name {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .project-tag {
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .project-body {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .project-links {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-link {
+      text-decoration: none;
+      font-size: 11px;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .project-link span {
+      font-size: 13px;
+      transform: translateY(1px);
+    }
+
+    /* Contact */
+    .contact-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 16px;
       align-items: center;
     }
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-    header nav a {
-      margin-left: 16px;
-      text-decoration: none;
-      color: #e5e7eb;
+
+    .contact-main {
       font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
     }
-    .hero {
-      padding: 60px 40px;
+
+    .contact-details {
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
     }
-    .hero h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
+
+    .contact-row-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
     }
-    .hero p {
-      max-width: 600px;
-      line-height: 1.6;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      border-radius: 6px;
-      border: 1px solid #38bdf8;
+
+    .contact-row-value a {
+      color: var(--accent);
       text-decoration: none;
-      color: #e5e7eb;
+    }
+
+    .contact-row-value a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .contact-chip {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .contact-chip span {
       font-size: 14px;
+      transform: translateY(1px);
     }
-    section {
-      padding: 40px;
+
+    .contact-chip:hover {
+      border-color: var(--accent);
+      background: rgba(15, 23, 42, 0.98);
+      transform: translateY(-1px);
     }
-    .project {
-      margin-bottom: 20px;
-      padding: 16px;
-      border-radius: 8px;
-      background: #020617;
-    }
+
+    /* Footer */
     footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      background: #020617;
-      color: #64748b;
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      padding: 14px 20px 18px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-right {
+        order: -1;
+      }
+      .profile-card {
+        margin-top: 6px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        padding: 10px 14px;
+      }
+      .nav-links {
+        display: none; /* simpler on small screens */
+      }
+      .shell {
+        padding: 20px 14px 40px;
+      }
+      .section-body,
+      .skills-body {
+        padding: 14px 14px 12px;
+      }
+      .contact-body {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
   </style>
 </head>
 <body>
+<div class="page">
+
+  <!-- Top navigation -->
   <header>
-    <h1>Amit Maurya</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="nav">
+      <div class="nav-left">
+        <div class="avatar">AM</div>
+        <div class="brand">
+          <div class="brand-name">Amit Maurya</div>
+          <div class="brand-role">Software Developer • DSA & Web</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">
+          Hire me
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
   </header>
 
   <main>
-    <section class="hero">
-      <h2>Hi, I'm Amit 👋</h2>
-      <p>
-        I'm an aspiring software developer who loves data structures,
-        algorithms, and building cool projects. This is my portfolio website,
-        where I showcase my work and skills.
-      </p>
-      <a href="#projects" class="btn">View my projects</a>
-    </section>
+    <div class="shell">
 
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        Write 3–4 lines about yourself here: your current education/job,
-        what technologies you know (C++, DSA, web dev, etc.), and what kind of
-        roles you’re aiming for.
-      </p>
-    </section>
+      <!-- Hero -->
+      <section class="hero" id="top">
+        <div class="hero-left">
+          <div class="pill">
+            <div class="pill-dot">•</div>
+            <span>Open to SDE / Backend / Full-stack roles</span>
+          </div>
 
-    <section id="projects">
-      <h2>Projects</h2>
+          <h1 class="hero-title">
+            Building reliable systems with
+            <span>clean code, strong fundamentals</span> and attention to detail.
+          </h1>
 
-      <div class="project">
-        <h3>Splitwise Clone</h3>
-        <p>
-          A web app to split expenses with friends. Built with [your tech stack],
-          supports multiple groups, balances, and expense history.
-        </p>
-        <p><strong>Tech:</strong> React, Node.js, PostgreSQL (example)</p>
-        <a href="#" class="btn">View Code</a>
-      </div>
+          <p class="hero-subtitle">
+            I’m a software developer who enjoys solving hard problems with data structures,
+            algorithms and pragmatic engineering. I like designing maintainable code,
+            readable APIs and small details that make products feel polished.
+          </p>
 
-      <div class="project">
-        <h3>Longest Substring Without Repeating Characters</h3>
-        <p>
-          Implemented an optimized sliding window solution using unordered_map
-          to achieve O(n) time complexity.
-        </p>
-        <p><strong>Tech:</strong> C++, STL</p>
-        <a href="#" class="btn">View Code</a>
-      </div>
-    </section>
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">
+              View selected projects
+              <span>↓</span>
+            </a>
+            <a href="#contact" class="btn-ghost">
+              Download résumé (coming soon)
+            </a>
+          </div>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: yourmail@example.com</p>
-      <p>GitHub: <a href="https://github.com/yourusername" style="color:#38bdf8;">github.com/yourusername</a></p>
-      <p>LinkedIn: <a href="#" style="color:#38bdf8;">linkedin.com/in/yourprofile</a></p>
-    </section>
+          <div class="hero-meta">
+            <div class="meta-chip"><strong>Focus:</strong> Backend-heavy web apps, system design basics, DSA.</div>
+            <div class="meta-chip"><strong>Strengths:</strong> consistency, debugging, code quality.</div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="profile-card">
+            <div class="profile-header">
+              <div class="profile-main">
+                <div class="profile-avatar">A</div>
+                <div>
+                  <div class="profile-text-name">Amit Kumar Maurya</div>
+                  <div class="profile-text-role">C++ • Node.js • Postgres • React</div>
+                </div>
+              </div>
+              <div class="profile-highlight">
+                Currently exploring <span>system design & scalable APIs</span>
+              </div>
+            </div>
+
+            <div class="profile-body">
+              <div class="profile-grid">
+                <div class="profile-stat">
+                  <strong>Data Structures & Algorithms</strong>
+                  Comfortable with arrays, hashing, sliding window, trees, graphs, DP and problem-solving patterns.
+                </div>
+                <div class="profile-stat">
+                  <strong>Web Engineering</strong>
+                  Experience building full-stack projects with authentication, clean APIs, relational DBs and state
+                  management.
+                </div>
+              </div>
+
+              <div class="profile-skills-label">Core stack</div>
+              <div class="chips">
+                <span class="chip chip--accent">C++ / STL</span>
+                <span class="chip">Node.js / Express</span>
+                <span class="chip">PostgreSQL / SQL</span>
+                <span class="chip">React / TypeScript (learning)</span>
+                <span class="chip">Git & GitHub</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about">
+        <div class="section-heading">
+          <div class="section-title">
+            <span class="dot"></span>
+            About
+          </div>
+          <div class="section-subtitle">
+            A quick snapshot of how I think about engineering and my work.
+          </div>
+        </div>
+
+        <div class="section-body">
+          <p class="about-text">
+            I’m a software developer with a strong foundation in data structures & algorithms and growing expertise in
+            backend-oriented web development. I enjoy taking a problem from a rough idea, breaking it into smaller
+            pieces and building a clean, well-structured solution that is easy to extend.
+          </p>
+
+          <div class="about-grid">
+            <div class="about-item">
+              <strong>Engineering mindset</strong>
+              I care about readable code, meaningful abstractions, naming, and tests that give confidence instead of
+              slowing development down.
+            </div>
+            <div class="about-item">
+              <strong>Learning by building</strong>
+              I like learning new concepts by applying them to real projects – from expense-sharing apps to algorithm
+              visualisations and API-driven tools.
+            </div>
+            <div class="about-item">
+              <strong>Collaboration</strong>
+              Comfortable with Git, code reviews and explaining trade-offs. I like writing short technical notes to
+              document decisions.
+            </div>
+            <div class="about-item">
+              <strong>What I’m exploring next</strong>
+              System design basics, database indexing, caching, queues and how to build reliable services under load.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills">
+        <div class="section-heading">
+          <div class="section-title">
+            <span class="dot"></span>
+            Skills & Technologies
+          </div>
+          <div class="section-subtitle">
+            Tools I reach for when turning ideas into working software.
+          </div>
+        </div>
+
+        <div class="skills-body">
+          <div class="skills-grid">
+            <div>
+              <div class="skills-group-title">Languages</div>
+              <div class="chips">
+                <span class="chip chip--accent">C++</span>
+                <span class="chip">JavaScript</span>
+                <span class="chip">TypeScript (learning)</span>
+                <span class="chip">SQL</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="skills-group-title">Backend / Databases</div>
+              <div class="chips">
+                <span class="chip">Node.js</span>
+                <span class="chip">Express</span>
+                <span class="chip">REST APIs</span>
+                <span class="chip">PostgreSQL</span>
+                <span class="chip">Database schema design</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="skills-group-title">Frontend</div>
+              <div class="chips">
+                <span class="chip">HTML5 / CSS3</span>
+                <span class="chip">React (basics)</span>
+                <span class="chip">Responsive layouts</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="skills-group-title">CS Fundamentals</div>
+              <div class="chips">
+                <span class="chip">DSA & problem solving</span>
+                <span class="chip">Time & space complexity</span>
+                <span class="chip">OOP</span>
+                <span class="chip">Git / GitHub</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <div class="section-heading">
+          <div class="section-title">
+            <span class="dot"></span>
+            Selected Projects
+          </div>
+          <div class="section-subtitle">
+            A small sample of things I’ve built and what I focused on for each.
+          </div>
+        </div>
+
+        <div class="section-body">
+          <div class="projects-grid">
+
+            <article class="project-card">
+              <div class="project-header">
+                <div>
+                  <div class="project-name">Splitwise-style Expense Sharing</div>
+                  <div class="section-subtitle">Full-stack | Groups, balances and settlements</div>
+                </div>
+                <div class="project-tag">Full-stack app</div>
+              </div>
+              <p class="project-body">
+                A Splitwise-inspired web app to manage group expenses and settle balances. Supports multiple groups,
+                per-user shares, running balances and simple settlement suggestions.
+              </p>
+              <div class="project-meta">
+                <div class="chips">
+                  <span class="chip">Node.js</span>
+                  <span class="chip">Express</span>
+                  <span class="chip">PostgreSQL</span>
+                  <span class="chip">Authentication</span>
+                </div>
+                <div class="project-links">
+                  <!-- Replace with real links when ready -->
+                  <a class="project-link" href="#" target="_blank" rel="noreferrer">
+                    View code
+                    <span>↗</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-header">
+                <div>
+                  <div class="project-name">Longest Substring Without Repeating Characters</div>
+                  <div class="section-subtitle">Algorithm implementation & optimisation</div>
+                </div>
+                <div class="project-tag">Algorithms</div>
+              </div>
+              <p class="project-body">
+                Implemented an efficient sliding-window solution using <code>unordered_map</code> to compute the longest
+                substring without repeating characters in O(n) time. Includes comparisons with a naïve O(n²) approach and
+                notes on when each pattern is useful.
+              </p>
+              <div class="project-meta">
+                <div class="chips">
+                  <span class="chip">C++</span>
+                  <span class="chip">Sliding window</span>
+                  <span class="chip">Hashing</span>
+                </div>
+                <div class="project-links">
+                  <a class="project-link" href="#" target="_blank" rel="noreferrer">
+                    View implementation
+                    <span>↗</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-header">
+                <div>
+                  <div class="project-name">Problem-solving Notebook</div>
+                  <div class="section-subtitle">Patterns, templates and learnings</div>
+                </div>
+                <div class="project-tag">DSA Practice</div>
+              </div>
+              <p class="project-body">
+                A curated set of solved problems covering arrays, hashing, two-pointers, trees and DP. Focused on
+                identifying patterns, writing clean iterative solutions and documenting trade-offs between time and
+                memory.
+              </p>
+              <div class="project-meta">
+                <div class="chips">
+                  <span class="chip">C++ / STL</span>
+                  <span class="chip">LeetCode-style problems</span>
+                  <span class="chip">Editorial notes</span>
+                </div>
+                <div class="project-links">
+                  <a class="project-link" href="#" target="_blank" rel="noreferrer">
+                    View repository
+                    <span>↗</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="section-heading">
+          <div class="section-title">
+            <span class="dot"></span>
+            Contact
+          </div>
+          <div class="section-subtitle">
+            The fastest way to reach me for opportunities, collaborations or questions.
+          </div>
+        </div>
+
+        <div class="section-body contact-body">
+          <div class="contact-main">
+            I’m actively looking for opportunities where I can work on real-world products, contribute to clean codebases
+            and keep sharpening my fundamentals. If you’re hiring for an SDE, backend or full-stack role and this
+            portfolio resonates with you, I’d love to talk.
+          </div>
+
+          <div>
+            <div class="contact-details">
+              <div>
+                <div class="contact-row-label">Email</div>
+                <div class="contact-row-value">
+                  <!-- replace with your real email -->
+                  <a href="mailto:yourmail@example.com">yourmail@example.com</a>
+                </div>
+              </div>
+
+              <div>
+                <div class="contact-row-label">GitHub</div>
+                <div class="contact-row-value">
+                  <a href="https://github.com/AmitKMGit" target="_blank" rel="noreferrer">
+                    github.com/AmitKMGit
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <div class="contact-row-label">LinkedIn</div>
+                <div class="contact-row-value">
+                  <!-- replace with your real LinkedIn -->
+                  <a href="#" target="_blank" rel="noreferrer">
+                    linkedin.com/in/yourprofile
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-socials">
+              <a class="contact-chip" href="#top">
+                Back to top
+                <span>↑</span>
+              </a>
+              <a class="contact-chip" href="mailto:yourmail@example.com">
+                Let’s build something
+                <span>✉</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
   </main>
 
+  <!-- Footer -->
   <footer>
-    © <span id="year"></span> Amit Maurya. All rights reserved.
+    <div class="footer-inner">
+      <div>
+        © <span id="year"></span> Amit Maurya. Crafted with care and a lot of <span style="color:#38bdf8;">{}</span>.
+      </div>
+      <div class="footer-right">
+        <div class="footer-pill">Portfolio v1 • Static HTML</div>
+        <div class="footer-pill">Next: React / Next.js version</div>
+      </div>
+    </div>
   </footer>
+</div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
