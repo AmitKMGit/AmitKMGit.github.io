@@ -4,13 +4,20 @@
   <meta charset="UTF-8" />
   <title>Amit Kumar Maurya • Software Engineer Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
+  <p style="color:#38bdf8; font-size:14px;">
+  👁 Total Visitors: <span id="visitor-count">Loading...</span>
+</p>
+<script>
+  // unique key based on your website
+  const counterUrl = "https://api.countapi.xyz/hit/amitkmgit.github.io/visits";
+
+  fetch(counterUrl)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("visitor-count").innerText = data.value;
+    });
+</script>
+
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
