@@ -7,16 +7,28 @@
   <p style="color:#38bdf8; font-size:14px;">
   👁 Total Visitors: <span id="visitor-count">Loading...</span>
 </p>
-<script>
-  // unique key based on your website
-  const counterUrl = "https://api.countapi.xyz/hit/amitkmgit.github.io/visits";
+ <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const counterUrl = "https://api.countapi.xyz/hit/amitkmgit-portfolio/visits";
 
-  fetch(counterUrl)
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("visitor-count").innerText = data.value;
+      fetch(counterUrl)
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          console.log("CountAPI response:", data);
+          var el = document.getElementById("visitor-count");
+          if (el && data && typeof data.value === "number") {
+            el.textContent = data.value;
+          } else if (el) {
+            el.textContent = "N/A";
+          }
+        })
+        .catch(function (err) {
+          console.error("Visitor counter error:", err);
+          var el = document.getElementById("visitor-count");
+          if (el) el.textContent = "Error";
+        });
     });
-</script>
+  </script>
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
