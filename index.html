@@ -7,7 +7,7 @@
   <meta name="description" content="Amit Kumar Maurya: Java backend engineer with 3+ years of experience building Spring Boot microservices, REST APIs and cloud-ready enterprise applications." />
   <meta property="og:title" content="Amit Kumar Maurya | Java Backend Engineer" />
   <meta property="og:description" content="3+ years building Spring Boot microservices, REST APIs and cloud-ready enterprise applications." />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="profile" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-6CPHR791FV"></script>
@@ -18,324 +18,442 @@
     gtag('config', 'G-6CPHR791FV');
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
     :root {
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --border: #e2e8f0;
-      --accent: #1d4ed8;
-      --accent-soft: #eff6ff;
-      --radius: 12px;
-      --shadow: 0 1px 2px rgba(15,23,42,.05), 0 4px 12px rgba(15,23,42,.04);
+      --page: #f3f2ef;
+      --card: #ffffff;
+      --text: #191919;
+      --muted: #5f6368;
+      --line: #e0dfdc;
+      --blue: #0a66c2;
+      --blue-dark: #004182;
+      --blue-soft: #e8f3ff;
+      --green: #057642;
+      --radius: 10px;
+      --shadow: 0 0 0 1px rgba(0,0,0,.06);
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0b1220;
-        --surface: #111a2e;
-        --text: #e8edf5;
-        --muted: #a3b0c4;
-        --border: #1f2b44;
-        --accent: #60a5fa;
-        --accent-soft: #14213d;
-        --shadow: none;
+        --page: #000000;
+        --card: #1b1f23;
+        --text: #f0f0f0;
+        --muted: #a7adb4;
+        --line: #38434f;
+        --blue: #71b7fb;
+        --blue-dark: #a5d2ff;
+        --blue-soft: #1f2d3d;
+        --green: #5fd08a;
+        --shadow: 0 0 0 1px rgba(255,255,255,.08);
       }
     }
-
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 70px; }
     body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      margin: 0; background: var(--page); color: var(--text);
+      font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased;
     }
-    a { color: var(--accent); text-decoration: none; }
+    a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+    button { font-family: inherit; cursor: pointer; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 6px; }
 
-    .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+    /* Top bar */
+    .topbar { position: sticky; top: 0; z-index: 20; background: var(--card); border-bottom: 1px solid var(--line); }
+    .topbar-in { max-width: 1128px; margin: 0 auto; padding: 0 16px; height: 54px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .mark { width: 34px; height: 34px; border-radius: 6px; background: var(--blue); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 15px; }
+    .top-left { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+    .top-nav { display: flex; gap: 6px; }
+    .top-nav a { color: var(--muted); font-size: 13px; padding: 6px 10px; border-radius: 6px; }
+    .top-nav a:hover, .top-nav a.active { color: var(--text); background: var(--blue-soft); text-decoration: none; }
 
-    header {
-      position: sticky; top: 0; z-index: 10;
-      background: color-mix(in srgb, var(--bg) 92%, transparent);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
+    .layout { max-width: 1128px; margin: 0 auto; padding: 24px 16px 40px; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; align-items: start; }
+    .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 8px; overflow: hidden; }
+    .pad { padding: 20px 24px; }
+
+    /* Profile card */
+    .cover { height: 200px; position: relative; background:
+        radial-gradient(500px 220px at 15% 20%, rgba(255,255,255,.22), transparent 70%),
+        radial-gradient(500px 240px at 90% 90%, rgba(0,0,0,.25), transparent 70%),
+        linear-gradient(120deg, #0a66c2, #004182 55%, #1d2f5a); }
+    .cover::after { content: "</>"; position: absolute; right: 24px; bottom: 14px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 56px; font-weight: 700; color: rgba(255,255,255,.14); letter-spacing: -2px; }
+    .profile-body { padding: 0 24px 22px; position: relative; }
+    .avatar {
+      width: 144px; height: 144px; border-radius: 50%; margin-top: -76px; border: 4px solid var(--card);
+      background: linear-gradient(135deg, #0a66c2, #7c3aed); color: #fff; display: grid; place-items: center;
+      font-size: 52px; font-weight: 700; letter-spacing: -1px; position: relative;
     }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-    .brand { font-weight: 700; font-size: 15px; color: var(--text); }
-    .brand:hover { text-decoration: none; }
-    .nav-links { display: flex; gap: 22px; align-items: center; font-size: 14px; }
-    .nav-links a { color: var(--muted); font-weight: 500; }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
-    .nav-links .nav-cta { color: #fff; background: var(--accent); padding: 7px 14px; border-radius: 8px; }
-    @media (prefers-color-scheme: dark) { .nav-links .nav-cta { color: #0b1220; } }
+    .open-badge { position: absolute; right: 24px; top: 14px; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--green); background: color-mix(in srgb, var(--green) 12%, transparent); padding: 5px 12px; border-radius: 999px; }
+    .open-badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+    h1 { font-size: 26px; line-height: 1.2; margin: 14px 0 2px; font-weight: 600; }
+    .headline { font-size: 16.5px; margin: 0 0 6px; }
+    .sub { color: var(--muted); font-size: 14px; }
+    .sub a { font-weight: 600; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 18px; border-radius: 999px; font-weight: 600; font-size: 15px; border: 1px solid var(--blue); background: transparent; color: var(--blue); }
+    .btn:hover { background: var(--blue-soft); text-decoration: none; box-shadow: inset 0 0 0 1px var(--blue); }
+    .btn.primary { background: var(--blue); color: #fff; }
+    @media (prefers-color-scheme: dark) { .btn.primary { color: #0b1a2b; } }
+    .btn.primary:hover { background: var(--blue-dark); box-shadow: none; }
+    @media (prefers-color-scheme: dark) { .btn.primary:hover { background: #a5d2ff; } }
+    .btn.ghost { border-color: var(--muted); color: var(--muted); }
 
-    .hero { padding: 64px 0 40px; }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 13px; font-weight: 500; color: var(--accent);
-      background: var(--accent-soft); padding: 5px 12px; border-radius: 999px;
+    .highlight {
+      margin-top: 16px; padding: 12px 16px; border-radius: 8px; background: var(--blue-soft); font-size: 14px;
+      display: grid; gap: 4px;
     }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: #16a34a; }
-    h1 { font-size: clamp(32px, 6vw, 46px); line-height: 1.15; margin: 18px 0 8px; letter-spacing: -0.02em; }
-    .role { font-size: 19px; color: var(--muted); margin: 0 0 18px; font-weight: 500; }
-    .lead { font-size: 16.5px; color: var(--muted); max-width: 700px; margin: 0 0 26px; }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .btn {
-      display: inline-flex; align-items: center; padding: 11px 20px; border-radius: 8px;
-      font-size: 14.5px; font-weight: 600; border: 1px solid var(--border);
-      color: var(--text); background: var(--surface);
-    }
-    .btn:hover { text-decoration: none; border-color: var(--accent); }
-    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-    @media (prefers-color-scheme: dark) { .btn.primary { color: #0b1220; } }
+    .highlight b { font-weight: 600; }
 
-    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-top: 36px; }
-    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow); }
-    .stat b { display: block; font-size: 22px; letter-spacing: -0.01em; }
+    /* Sections */
+    h2 { font-size: 20px; font-weight: 600; margin: 0 0 12px; }
+    .about p { margin: 0 0 8px; white-space: pre-line; }
+    .clamp { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .more { background: none; border: 0; color: var(--muted); font-weight: 600; padding: 0; }
+    .more:hover { color: var(--blue); text-decoration: underline; }
+    .top-skills { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 14px; }
+    .top-skills b { display: block; margin-bottom: 4px; }
+
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 4px; }
+    .stat { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+    .stat b { display: block; font-size: 22px; font-weight: 600; color: var(--blue); }
     .stat span { font-size: 13px; color: var(--muted); }
 
-    section { padding: 40px 0; border-top: 1px solid var(--border); }
-    h2 { font-size: 22px; margin: 0 0 6px; letter-spacing: -0.01em; }
-    .sub { color: var(--muted); font-size: 14.5px; margin: 0 0 22px; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
-    .card + .card { margin-top: 16px; }
-    .card h3 { margin: 0; font-size: 17px; }
-    .meta { color: var(--muted); font-size: 13.5px; margin: 2px 0 12px; }
-    .card p { margin: 0 0 12px; color: var(--muted); font-size: 15px; }
-    .card ul { margin: 0 0 14px; padding-left: 20px; color: var(--muted); font-size: 15px; }
-    .card li { margin-bottom: 6px; }
+    .entry { display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid var(--line); }
+    .entry:first-of-type { border-top: 0; padding-top: 4px; }
+    .logo { flex: 0 0 52px; width: 52px; height: 52px; border-radius: 6px; display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 20px; }
+    .l1 { background: linear-gradient(135deg, #6d28d9, #a855f7); }
+    .l2 { background: linear-gradient(135deg, #0a66c2, #38bdf8); }
+    .l3 { background: linear-gradient(135deg, #0f766e, #34d399); }
+    .l4 { background: linear-gradient(135deg, #b45309, #fbbf24); }
+    .l5 { background: linear-gradient(135deg, #475569, #94a3b8); }
+    .entry-body { flex: 1; min-width: 0; }
+    .entry h3 { margin: 0; font-size: 16px; font-weight: 600; }
+    .entry .org { font-size: 14px; }
+    .entry .when { font-size: 14px; color: var(--muted); }
+    .entry ul { margin: 10px 0 0; padding-left: 18px; font-size: 14.5px; }
+    .entry li { margin-bottom: 5px; }
+    .skills-line { margin-top: 10px; font-size: 14px; }
+    .skills-line b { font-weight: 600; }
+    .collapsed li:nth-child(n+3) { display: none; }
 
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag { font-size: 12.5px; font-weight: 500; padding: 4px 11px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .chip { font-size: 13px; font-weight: 600; padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--text); }
+    .skill-group { padding: 12px 0; border-top: 1px solid var(--line); }
+    .skill-group:first-of-type { border-top: 0; padding-top: 0; }
+    .skill-group h3 { margin: 0; font-size: 15px; font-weight: 600; }
+    .skill-group .chips { margin-top: 8px; }
 
-    .links { display: flex; gap: 18px; font-size: 14px; font-weight: 600; margin-top: 14px; }
+    .project-links { display: flex; gap: 14px; margin-top: 8px; font-weight: 600; font-size: 14px; }
 
-    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-    .skills h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin: 0 0 10px; }
+    /* Sidebar */
+    .side-card h3 { margin: 0 0 10px; font-size: 16px; font-weight: 600; }
+    .contact-line { display: flex; flex-direction: column; margin-bottom: 12px; font-size: 14px; }
+    .contact-line span { color: var(--muted); font-size: 12.5px; }
+    .side-note { font-size: 13.5px; color: var(--muted); }
+    .copy-btn { background: none; border: 0; color: var(--blue); font-weight: 600; padding: 0; font-size: 13px; text-align: left; }
+    .copy-btn:hover { text-decoration: underline; }
 
-    .contact-list { display: grid; gap: 10px; font-size: 15px; }
-    .contact-list span { display: inline-block; width: 84px; color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; }
+    /* Modal */
+    #modal { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none; align-items: center; justify-content: center; z-index: 50; padding: 16px; }
+    #modal.open { display: flex; }
+    .sheet { background: var(--card); border-radius: 10px; width: min(520px, 100%); padding: 22px 24px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+    .sheet h2 { margin-bottom: 14px; }
+    .close { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: transparent; color: var(--muted); font-size: 20px; }
+    .close:hover { background: var(--blue-soft); }
+    .sheet .row { margin-bottom: 14px; }
+    .sheet .row b { display: block; font-size: 14px; }
 
-    footer { border-top: 1px solid var(--border); padding: 22px 0; font-size: 13px; color: var(--muted); }
+    footer { max-width: 1128px; margin: 0 auto; padding: 0 16px 40px; color: var(--muted); font-size: 12.5px; text-align: center; }
 
-    @media (max-width: 640px) {
-      .nav-links a:not(.nav-cta) { display: none; }
-      .hero { padding-top: 40px; }
+    .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 16px); background: #191919; color: #fff; padding: 10px 18px; border-radius: 6px; font-size: 14px; font-weight: 600; opacity: 0; pointer-events: none; transition: all .25s; z-index: 80; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 920px) {
+      .layout { grid-template-columns: 1fr; }
+      .top-nav { display: none; }
     }
-    @media print {
-      header, .actions, .nav-links { display: none; }
-      body { background: #fff; color: #000; }
-      .card, .stat { box-shadow: none; }
+    @media (max-width: 520px) {
+      .avatar { width: 112px; height: 112px; margin-top: -60px; font-size: 40px; }
+      .cover { height: 140px; }
+      .open-badge { position: static; margin-top: 12px; }
+      .pad, .profile-body { padding-left: 16px; padding-right: 16px; }
     }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+    @media print { .topbar, .cta-row, .toast, #modal { display: none !important; } body { background: #fff; } .card { box-shadow: none; } }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#top">Amit Kumar Maurya</a>
-    <nav class="nav-links" aria-label="Primary">
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="top-left"><span class="mark" aria-hidden="true">AM</span><span>Amit Kumar Maurya</span></div>
+    <nav class="top-nav" aria-label="Sections">
+      <a href="#top">Profile</a>
+      <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#education">Education</a>
-      <a class="nav-cta" href="#contact">Contact</a>
     </nav>
   </div>
-</header>
+</div>
 
-<main class="wrap" id="top">
+<div class="layout" id="top">
+  <main>
 
-  <div class="hero">
-    <span class="eyebrow"><span class="dot"></span> Open to new opportunities</span>
-    <h1>Amit Kumar Maurya</h1>
-    <p class="role">Java Backend Engineer · Spring Boot · Microservices</p>
-    <p class="lead">
-      Software Engineer with 3+ years of experience building scalable, cloud-ready applications
-      using Java, Spring Boot and microservices architecture. Strong in REST APIs, distributed
-      systems and CI/CD, with hands-on experience in authentication (JWT / OAuth 2.0) and
-      containerization, focused on delivering reliable, maintainable enterprise solutions.
-    </p>
-    <div class="actions">
-      <a class="btn primary" href="https://drive.google.com/file/d/1nrkGCOoGlx_npUj53s1QKfGbh7RllI7i/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Download résumé</a>
-      <a class="btn" href="#contact">Get in touch</a>
-      <a class="btn" href="https://github.com/AmitKMGit" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </div>
+    <!-- Profile -->
+    <section class="card">
+      <div class="cover" aria-hidden="true"></div>
+      <div class="profile-body">
+        <div class="avatar" aria-hidden="true">AM</div>
+        <span class="open-badge"><i></i> Open to work</span>
+        <h1>Amit Kumar Maurya</h1>
+        <p class="headline">Java Backend Developer | Spring Boot · Microservices · REST APIs · MongoDB · Docker · CI/CD</p>
+        <div class="sub">Accenture · Abdul Kalam Technical University · <button class="more" id="openContact" type="button" style="color:var(--blue)">Contact info</button></div>
+        <div class="cta-row">
+          <a class="btn primary" href="mailto:amitmaurya0410@gmail.com">Message</a>
+          <a class="btn" href="https://drive.google.com/file/d/1nrkGCOoGlx_npUj53s1QKfGbh7RllI7i/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Download résumé</a>
+          <a class="btn ghost" href="https://github.com/AmitKMGit" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+        <div class="highlight">
+          <b>Open to Java Backend and Full-Stack roles</b>
+          <span class="sub">Spring Boot microservices · Legacy modernization · Cloud-ready enterprise systems</span>
+        </div>
+      </div>
+    </section>
 
-    <div class="stats">
-      <div class="stat"><b>3+ years</b><span>Professional experience</span></div>
-      <div class="stat"><b>5M+ records</b><span>Migrated with zero downtime</span></div>
-      <div class="stat"><b>3 wks → 8 days</b><span>Release cycle reduction</span></div>
-      <div class="stat"><b>250+</b><span>DSA problems solved</span></div>
-    </div>
+    <!-- About -->
+    <section class="card pad about" id="about">
+      <h2>About</h2>
+      <p id="aboutText" class="clamp">Software Engineer with 3+ years of experience building scalable, cloud-ready applications using Java, Spring Boot and microservices architecture. Strong in REST APIs, distributed systems and CI/CD, with hands-on experience in authentication (JWT / OAuth 2.0), cloud platforms and containerization.
+
+I focus on delivering high-quality, reliable and maintainable enterprise solutions, from re-architecting a 10+ year-old Struts monolith into Spring Boot microservices to migrating a production backend to Java 25.
+
+Along the way I've solved 250+ problems on Data Structures and Algorithms on LeetCode and Codeforces, which keeps my fundamentals sharp.</p>
+      <button class="more" id="aboutMore" type="button">…see more</button>
+      <div class="top-skills">
+        <b>Top skills</b>
+        <span class="sub">Java · Spring Boot · Microservices · REST APIs · MongoDB</span>
+      </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="card pad">
+      <h2>Impact at a glance</h2>
+      <div class="stats-row">
+        <div class="stat"><b>3+ yrs</b><span>Professional experience</span></div>
+        <div class="stat"><b>5M+</b><span>Records migrated, zero downtime</span></div>
+        <div class="stat"><b>3 wks → 8 days</b><span>Release cycle reduced</span></div>
+        <div class="stat"><b>-30%</b><span>Licensing cost</span></div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="card pad" id="experience">
+      <h2>Experience</h2>
+
+      <div class="entry">
+        <div class="logo l1" aria-hidden="true">A</div>
+        <div class="entry-body">
+          <h3>Java Backend Developer</h3>
+          <div class="org">Accenture · Full-time</div>
+          <div class="when">Jun 2026 – Present</div>
+          <ul class="collapsed">
+            <li>Migrated the ACAN backend from legacy Java to Java 25, resolving compatibility issues and upgrading application dependencies.</li>
+            <li>Developed and maintained scalable microservices using Java and Spring Boot, integrating REST APIs and MongoDB.</li>
+            <li>Refactored legacy code and fixed compilation, runtime and dependency issues during the Java 25 migration.</li>
+            <li>Wrote unit and integration tests with JUnit and Mockito for reliable code.</li>
+            <li>Troubleshot production issues, analyzed logs and worked with cross-functional teams to resolve defects and support deployments.</li>
+          </ul>
+          <button class="more toggle" type="button">…see more</button>
+          <div class="skills-line"><b>Skills:</b> Java 25 · Spring Boot · Microservices · MongoDB · JUnit · Mockito</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="logo l2" aria-hidden="true">C</div>
+        <div class="entry-body">
+          <h3>Software Engineer</h3>
+          <div class="org">Coforge Ltd · Full-time</div>
+          <div class="when">Nov 2023 – Jun 2026</div>
+          <ul class="collapsed">
+            <li>Designed cloud-ready microservices built for scalability and high availability.</li>
+            <li>Designed and optimized database schemas and SQL queries on Oracle and MySQL.</li>
+            <li>Worked with containerized applications using Docker and explored Kubernetes concepts.</li>
+            <li>Built unit and integration tests (JUnit, Mockito) to maintain code quality.</li>
+            <li>Worked with CI/CD pipelines (Jenkins, GitLab) and gained exposure to cloud deployment and distributed systems design.</li>
+            <li>Collaborated in Agile teams and documented APIs using Swagger.</li>
+          </ul>
+          <button class="more toggle" type="button">…see more</button>
+          <div class="skills-line"><b>Skills:</b> Java · Spring Boot · Angular · SQL · Docker · Jenkins · GitLab · Swagger</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="card pad" id="projects">
+      <h2>Projects</h2>
+
+      <div class="entry">
+        <div class="logo l3" aria-hidden="true">C+</div>
+        <div class="entry-body">
+          <h3>CMS+ (Cargo Management System)</h3>
+          <div class="when">Monolith-to-microservices modernization</div>
+          <ul class="collapsed">
+            <li>Re-architected a 10+ year-old Struts monolith into Spring Boot microservices and migrated the database from Oracle to MySQL.</li>
+            <li>Applied a layered architecture (Controller, Service, Repository) for clear separation of concerns.</li>
+            <li>Increased system scalability by 20% and cut the release cycle from 3 weeks to 8 days.</li>
+            <li>Reduced licensing costs by 30% and improved query performance by 30%.</li>
+            <li>Processed 5M+ records with zero downtime and 95% data accuracy.</li>
+            <li>Implemented authentication and authorization using Spring Security and JWT-based access control.</li>
+            <li>Documented APIs using Swagger / OpenAPI for better usability and integration.</li>
+          </ul>
+          <button class="more toggle" type="button">…see more</button>
+          <div class="skills-line"><b>Skills:</b> Java · Spring Boot · Spring Security · REST APIs · Oracle · MySQL · Jenkins · Maven</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="logo l4" aria-hidden="true">AC</div>
+        <div class="entry-body">
+          <h3>ACAN Backend Modernization</h3>
+          <div class="when">Legacy Java to Java 25 migration</div>
+          <ul>
+            <li>Migrated the legacy application to Java 25 and refactored legacy code where required.</li>
+            <li>Developed and maintained REST APIs and microservices using Java and Spring Boot.</li>
+            <li>Resolved Java compatibility, dependency and runtime issues during the migration.</li>
+            <li>Used MongoDB for data persistence and tested with JUnit and Mockito.</li>
+          </ul>
+          <div class="skills-line"><b>Skills:</b> Java 25 · Spring Boot · Microservices · REST APIs · MongoDB · Maven</div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="logo l5" aria-hidden="true">AI</div>
+        <div class="entry-body">
+          <h3>Chatassist AI</h3>
+          <div class="when">Personal full-stack project</div>
+          <ul>
+            <li>Chat assistant web app with a Spring Boot REST backend and an Angular frontend.</li>
+            <li>JWT authentication, role-based access and chat history stored in a SQL database.</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/AmitKMGit/chatassist-ai/tree/develop/backend" target="_blank" rel="noopener noreferrer">Backend code ↗</a>
+            <a href="https://github.com/AmitKMGit/chatassist-ai/tree/develop/frontend/chatassist-ui" target="_blank" rel="noopener noreferrer">Frontend code ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="card pad" id="skills">
+      <h2>Skills</h2>
+      <div class="skill-group"><h3>Languages</h3><div class="chips"><span class="chip">Java 8+</span><span class="chip">C++</span></div></div>
+      <div class="skill-group"><h3>Frameworks &amp; Architecture</h3><div class="chips"><span class="chip">Spring Boot</span><span class="chip">Spring MVC</span><span class="chip">Spring Data</span><span class="chip">Spring Security</span><span class="chip">Hibernate / JPA</span><span class="chip">REST APIs</span><span class="chip">Microservices</span></div></div>
+      <div class="skill-group"><h3>Databases</h3><div class="chips"><span class="chip">MongoDB</span><span class="chip">MS SQL Server</span><span class="chip">MySQL</span><span class="chip">Oracle</span></div></div>
+      <div class="skill-group"><h3>Messaging</h3><div class="chips"><span class="chip">Kafka</span><span class="chip">RabbitMQ</span></div></div>
+      <div class="skill-group"><h3>Cloud &amp; DevOps</h3><div class="chips"><span class="chip">Jenkins (CI/CD)</span><span class="chip">GitLab CI</span><span class="chip">Docker</span></div></div>
+      <div class="skill-group"><h3>Core Java</h3><div class="chips"><span class="chip">Collections</span><span class="chip">Multithreading</span><span class="chip">JVM</span><span class="chip">Exception Handling</span><span class="chip">Generics</span></div></div>
+      <div class="skill-group"><h3>Tools</h3><div class="chips"><span class="chip">Git / GitHub</span><span class="chip">Maven</span><span class="chip">Postman</span><span class="chip">Swagger</span><span class="chip">VS Code</span><span class="chip">GitHub Copilot</span></div></div>
+    </section>
+
+    <!-- Education -->
+    <section class="card pad" id="education">
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="logo l1" aria-hidden="true">AK</div>
+        <div class="entry-body">
+          <h3>Abdul Kalam Technical University</h3>
+          <div class="org">Bachelor of Engineering</div>
+          <div class="when">Sep 2019 – May 2023 · GPA 7.58 / 10</div>
+          <div class="skills-line">Solved 250+ problems on Data Structures and Algorithms on LeetCode and Codeforces.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside>
+    <section class="card pad side-card">
+      <h3>Contact</h3>
+      <div class="contact-line"><span>Email</span><a href="mailto:amitmaurya0410@gmail.com">amitmaurya0410@gmail.com</a><button class="copy-btn" id="copyEmail" type="button">Copy email</button></div>
+      <div class="contact-line"><span>LinkedIn</span><a href="https://www.linkedin.com/in/amit-kumar-maurya-7ba5a71b9/" target="_blank" rel="noopener noreferrer">amit-kumar-maurya-7ba5a71b9</a></div>
+      <div class="contact-line"><span>GitHub</span><a href="https://github.com/AmitKMGit" target="_blank" rel="noopener noreferrer">github.com/AmitKMGit</a></div>
+      <div class="contact-line" style="margin-bottom:0"><span>Résumé</span><a href="https://drive.google.com/file/d/1nrkGCOoGlx_npUj53s1QKfGbh7RllI7i/view?usp=drive_link" target="_blank" rel="noopener noreferrer">View / download PDF</a></div>
+    </section>
+    <section class="card pad side-card">
+      <h3>Looking for</h3>
+      <p class="side-note" style="margin:0">Java Backend and Full-Stack engineering roles where I can build and modernize microservices, design clean APIs and ship reliable software.</p>
+    </section>
+  </aside>
+</div>
+
+<footer>© <span id="year"></span> Amit Kumar Maurya · Profile-style portfolio</footer>
+
+<!-- Contact modal -->
+<div id="modal" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="cTitle">
+    <button class="close" id="closeModal" type="button" aria-label="Close">✕</button>
+    <h2 id="cTitle">Amit Kumar Maurya</h2>
+    <div class="row"><b>Email</b><a href="mailto:amitmaurya0410@gmail.com">amitmaurya0410@gmail.com</a></div>
+    <div class="row"><b>LinkedIn</b><a href="https://www.linkedin.com/in/amit-kumar-maurya-7ba5a71b9/" target="_blank" rel="noopener noreferrer">linkedin.com/in/amit-kumar-maurya-7ba5a71b9</a></div>
+    <div class="row"><b>GitHub</b><a href="https://github.com/AmitKMGit" target="_blank" rel="noopener noreferrer">github.com/AmitKMGit</a></div>
+    <div class="row"><b>Résumé</b><a href="https://drive.google.com/file/d/1nrkGCOoGlx_npUj53s1QKfGbh7RllI7i/view?usp=drive_link" target="_blank" rel="noopener noreferrer">View / download PDF</a></div>
   </div>
+</div>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <p class="sub">Enterprise Java engineering across modernization, migration and microservices work.</p>
-
-    <div class="card">
-      <h3>Java Backend Developer, Accenture</h3>
-      <div class="meta">June 2026 – Present</div>
-      <ul>
-        <li>Migrated the ACAN backend from legacy Java to Java 25, resolving compatibility issues and upgrading application dependencies.</li>
-        <li>Developed and maintained scalable microservices using Java and Spring Boot, integrating REST APIs and MongoDB.</li>
-        <li>Refactored legacy code and fixed compilation, runtime and dependency issues during the migration.</li>
-        <li>Wrote unit and integration tests with JUnit and Mockito for reliable code.</li>
-        <li>Troubleshot production issues, analyzed logs and worked with cross-functional teams to resolve defects and support deployments.</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">Java 25</span><span class="tag">Spring Boot</span><span class="tag">Microservices</span><span class="tag">MongoDB</span><span class="tag">JUnit</span><span class="tag">Mockito</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Software Engineer, Coforge Ltd</h3>
-      <div class="meta">November 2023 – June 2026</div>
-      <ul>
-        <li>Designed cloud-ready microservices built for scalability and high availability.</li>
-        <li>Designed and optimized database schemas and SQL queries on Oracle and MySQL.</li>
-        <li>Worked with containerized applications using Docker and explored Kubernetes concepts.</li>
-        <li>Built unit and integration tests (JUnit, Mockito) to maintain code quality.</li>
-        <li>Worked with CI/CD pipelines (Jenkins, GitLab) and gained exposure to cloud deployment and distributed systems design.</li>
-        <li>Collaborated in Agile teams and documented APIs using Swagger.</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Angular</span><span class="tag">SQL</span><span class="tag">Docker</span><span class="tag">Jenkins</span><span class="tag">GitLab</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <p class="sub">Selected work with measurable outcomes.</p>
-
-    <div class="card">
-      <h3>CMS+ (Cargo Management System)</h3>
-      <div class="meta">Monolith-to-microservices modernization</div>
-      <ul>
-        <li>Re-architected a 10+ year-old Struts monolith into Spring Boot microservices and migrated the database from Oracle to MySQL.</li>
-        <li>Applied a layered architecture (Controller, Service, Repository) for clear separation of concerns.</li>
-        <li>Increased system scalability by 20% and cut the release cycle from 3 weeks to 8 days.</li>
-        <li>Reduced licensing costs by 30% and improved query performance by 30%.</li>
-        <li>Processed 5M+ records with zero downtime and 95% data accuracy.</li>
-        <li>Implemented authentication and authorization with Spring Security and JWT-based access control.</li>
-        <li>Documented APIs with Swagger / OpenAPI for easier integration.</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Spring Security</span><span class="tag">REST APIs</span><span class="tag">Oracle</span><span class="tag">MySQL</span><span class="tag">Jenkins</span><span class="tag">Maven</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>ACAN Backend Modernization</h3>
-      <div class="meta">Legacy Java to Java 25 migration</div>
-      <ul>
-        <li>Migrated the legacy ACAN application to Java 25 and refactored legacy code where required.</li>
-        <li>Developed and maintained REST APIs and microservices with Java and Spring Boot.</li>
-        <li>Resolved Java compatibility, dependency and runtime issues during the migration.</li>
-        <li>Used MongoDB for data persistence and tested with JUnit and Mockito.</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">Java 25</span><span class="tag">Spring Boot</span><span class="tag">Microservices</span><span class="tag">MongoDB</span><span class="tag">Maven</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Chatassist AI</h3>
-      <div class="meta">Personal full-stack project</div>
-      <p>
-        A chat assistant web app with a Spring Boot REST backend and an Angular frontend,
-        featuring JWT authentication, chat history stored in SQL, and role-based access.
-      </p>
-      <div class="tags">
-        <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Angular</span><span class="tag">MySQL</span><span class="tag">JWT</span>
-      </div>
-      <div class="links">
-        <a href="https://github.com/AmitKMGit/chatassist-ai/tree/develop/backend" target="_blank" rel="noopener noreferrer">Backend code ↗</a>
-        <a href="https://github.com/AmitKMGit/chatassist-ai/tree/develop/frontend/chatassist-ui" target="_blank" rel="noopener noreferrer">Frontend code ↗</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <h2>Skills</h2>
-    <p class="sub">Technologies I use day to day.</p>
-    <div class="card">
-      <div class="skills">
-        <div>
-          <h3>Languages</h3>
-          <div class="tags"><span class="tag">Java 8+</span><span class="tag">C++</span></div>
-        </div>
-        <div>
-          <h3>Frameworks</h3>
-          <div class="tags"><span class="tag">Spring Boot</span><span class="tag">Spring MVC</span><span class="tag">Spring Data</span><span class="tag">Spring Security</span><span class="tag">Hibernate / JPA</span><span class="tag">REST APIs</span><span class="tag">Microservices</span></div>
-        </div>
-        <div>
-          <h3>Databases</h3>
-          <div class="tags"><span class="tag">MS SQL Server</span><span class="tag">MongoDB</span><span class="tag">MySQL</span><span class="tag">Oracle</span></div>
-        </div>
-        <div>
-          <h3>Messaging</h3>
-          <div class="tags"><span class="tag">Kafka</span><span class="tag">RabbitMQ</span></div>
-        </div>
-        <div>
-          <h3>Cloud &amp; DevOps</h3>
-          <div class="tags"><span class="tag">Jenkins (CI/CD)</span><span class="tag">GitLab CI</span><span class="tag">Docker</span></div>
-        </div>
-        <div>
-          <h3>Core Java</h3>
-          <div class="tags"><span class="tag">Collections</span><span class="tag">Multithreading</span><span class="tag">JVM</span><span class="tag">Exception Handling</span><span class="tag">Generics</span></div>
-        </div>
-        <div>
-          <h3>Tools</h3>
-          <div class="tags"><span class="tag">Git / GitHub</span><span class="tag">Maven</span><span class="tag">Postman</span><span class="tag">Swagger</span><span class="tag">VS Code</span><span class="tag">GitHub Copilot</span></div>
-        </div>
-        <div>
-          <h3>Problem Solving</h3>
-          <div class="tags"><span class="tag">250+ problems on LeetCode &amp; Codeforces</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="education">
-    <h2>Education</h2>
-    <div class="card">
-      <h3>Bachelor of Engineering</h3>
-      <div class="meta">Abdul Kalam Technical University, U.P. · Sep 2019 – May 2023 · GPA 7.58 / 10</div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p class="sub">I'm open to Java Backend and Full-Stack roles. Feel free to reach out.</p>
-    <div class="card">
-      <div class="contact-list">
-        <div><span>Email</span><a href="mailto:amitmaurya0410@gmail.com">amitmaurya0410@gmail.com</a></div>
-        <div><span>LinkedIn</span><a href="https://www.linkedin.com/in/amit-kumar-maurya-7ba5a71b9/" target="_blank" rel="noopener noreferrer">linkedin.com/in/amit-kumar-maurya-7ba5a71b9</a></div>
-        <div><span>GitHub</span><a href="https://github.com/AmitKMGit" target="_blank" rel="noopener noreferrer">github.com/AmitKMGit</a></div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap">© <span id="year"></span> Amit Kumar Maurya</div>
-</footer>
+<div class="toast" id="toast" role="status">Email copied</div>
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* About see more */
+  var about = document.getElementById("aboutText");
+  var aboutBtn = document.getElementById("aboutMore");
+  aboutBtn.addEventListener("click", function () {
+    var open = about.classList.toggle("clamp");
+    aboutBtn.textContent = open ? "…see more" : "see less";
+  });
+
+  /* Experience / project see more */
+  document.querySelectorAll(".toggle").forEach(function (btn) {
+    var list = btn.previousElementSibling;
+    if (list.children.length <= 2) { btn.style.display = "none"; list.classList.remove("collapsed"); return; }
+    btn.addEventListener("click", function () {
+      var collapsed = list.classList.toggle("collapsed");
+      btn.textContent = collapsed ? "…see more" : "see less";
+    });
+  });
+
+  /* Contact modal */
+  var modal = document.getElementById("modal");
+  var opener = null;
+  function openModal() { opener = document.activeElement; modal.classList.add("open"); modal.setAttribute("aria-hidden", "false"); document.getElementById("closeModal").focus(); }
+  function closeModal() { modal.classList.remove("open"); modal.setAttribute("aria-hidden", "true"); if (opener) opener.focus(); }
+  document.getElementById("openContact").addEventListener("click", openModal);
+  document.getElementById("closeModal").addEventListener("click", closeModal);
+  modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && modal.classList.contains("open")) closeModal(); });
+
+  /* Copy email */
+  var toast = document.getElementById("toast");
+  document.getElementById("copyEmail").addEventListener("click", function () {
+    var email = "amitmaurya0410@gmail.com";
+    function done() { toast.classList.add("show"); setTimeout(function () { toast.classList.remove("show"); }, 1600); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(done, function () { window.location.href = "mailto:" + email; });
+    } else { window.location.href = "mailto:" + email; }
+  });
+
+  /* Active nav on scroll */
+  var links = document.querySelectorAll(".top-nav a");
+  var secs = Array.prototype.map.call(links, function (a) { return document.querySelector(a.getAttribute("href")); });
+  function onScroll() {
+    var cur = 0;
+    secs.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= 120) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle("active", i === cur); });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 </script>
 </body>
 </html>
